@@ -53,6 +53,7 @@ class App extends React.Component {
           <div className="container">
             <Header></Header>
             <Route
+              exact
               path="/"
               render={(props) => (
                 <React.Fragment>
@@ -65,14 +66,7 @@ class App extends React.Component {
                 </React.Fragment>
               )}
             ></Route>
-            <Route
-              path="/about"
-              render={(props) => (
-                <React.Fragment>
-                  <About></About>
-                </React.Fragment>
-              )}
-            ></Route>
+            <Route path="/about" component={About}></Route>
           </div>
         </div>
       </Router>
