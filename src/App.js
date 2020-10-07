@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Header from './components/Header';
 import Planner from './components/Planner';
 
 class App extends React.Component {
@@ -36,6 +37,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <Header></Header>
         <Planner
           tasks={this.state.tasks}
           markComplete={this.markComplete}
