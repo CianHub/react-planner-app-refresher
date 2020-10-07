@@ -16,17 +16,23 @@ class App extends React.Component {
       'https://jsonplaceholder.typicode.com/todos?_limit=10'
     );
     const data = req.data;
-    console.log(data);
     this.setState({ tasks: [...this.state.tasks, ...data] });
   }
 
   addNewTask = (task) => {
-    this.setState({
-      tasks: [
-        ...this.state.tasks,
-        { ...task, id: this.state.tasks.length + 1 },
-      ],
-    });
+    axios
+      .post('https://jsonplaceholder.typicode.com/todos', {
+        ...task,
+        id: this.state.tasks.length + 1,
+      })
+      .then(() => {
+        this.setState({
+          tasks: [
+            ...this.state.tasks,
+            { ...task, id: this.state.tasks.length + 1 },
+          ],
+        });
+      });
   };
 
   markComplete = (id) => {
