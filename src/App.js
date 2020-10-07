@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import AddTask from './components/AddTask';
 import Header from './components/Header';
 import Planner from './components/Planner';
 
@@ -11,6 +12,8 @@ class App extends React.Component {
       { id: 3, title: 'Clean kitchen', completed: false },
     ],
   };
+
+  addNewTask = (task) => this.setState({ tasks: [...this.state.tasks, task] });
 
   markComplete = (id) => {
     this.setState({
@@ -37,12 +40,15 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header></Header>
-        <Planner
-          tasks={this.state.tasks}
-          markComplete={this.markComplete}
-          deleteTask={this.deleteTask}
-        ></Planner>
+        <div className="container">
+          <Header></Header>
+          <AddTask addTask={addTask}></AddTask>
+          <Planner
+            tasks={this.state.tasks}
+            markComplete={this.markComplete}
+            deleteTask={this.deleteTask}
+          ></Planner>
+        </div>
       </div>
     );
   }
