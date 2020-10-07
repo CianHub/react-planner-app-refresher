@@ -10,10 +10,15 @@ class App extends React.Component {
       { id: 3, title: 'Clean kitchen', completed: false },
     ],
   };
+
+  markComplete = (e) => {
+    console.log('hi')
+  }
+
   render() {
     return (
       <div className="App">
-        <Planner tasks={this.state.tasks}></Planner>
+        <Planner tasks={this.state.tasks} markComplete={this.markComplete}></Planner>
       </div>
     );
   }

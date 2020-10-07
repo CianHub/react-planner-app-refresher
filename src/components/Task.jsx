@@ -14,7 +14,7 @@ export class Task extends Component {
         return (
             <div style={this.getStyle(this.props.completed)}>
                 <p>
-                    <input type="checkbox" onChange={this.markComplete} />{' '}
+                    <input type="checkbox" onChange={this.props.markComplete} />{' '}
                     {this.props.task.title}</p>
             </div>
         );
