@@ -1,11 +1,10 @@
 import React from 'react';
+import Task from './Task';
 
 export default class Planner extends React.Component {
     render() {
-        return (
-            <div>
-                <h1>Planner</h1>
-            </div>
-        );
+        return this.props.tasks.map((task) => {
+            return <Task key={task.id} task={task} />
+        })
     }
 }
