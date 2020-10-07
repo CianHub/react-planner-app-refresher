@@ -47,14 +47,18 @@ class App extends React.Component {
   };
 
   deleteTask = (id) => {
-    this.setState({
-      tasks: [...this.state.tasks].filter((task) => {
-        if (task.id === id) {
-          return false;
-        }
-        return true;
-      }),
-    });
+    axios
+      .delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+      .then(() => {
+        this.setState({
+          tasks: [...this.state.tasks].filter((task) => {
+            if (task.id === id) {
+              return false;
+            }
+            return true;
+          }),
+        });
+      });
   };
 
   render() {
