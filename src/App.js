@@ -3,6 +3,8 @@ import './App.css';
 import AddTask from './components/AddTask';
 import Header from './components/Header';
 import Planner from './components/Planner';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { About } from './components/About';
 
 class App extends React.Component {
   state = {
@@ -46,17 +48,34 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="container">
-          <Header></Header>
-          <AddTask addNewTask={this.addNewTask}></AddTask>
-          <Planner
-            tasks={this.state.tasks}
-            markComplete={this.markComplete}
-            deleteTask={this.deleteTask}
-          ></Planner>
+      <Router>
+        <div className="App">
+          <div className="container">
+            <Header></Header>
+            <Route
+              path="/"
+              render={(props) => (
+                <React.Fragment>
+                  <AddTask addNewTask={this.addNewTask}></AddTask>
+                  <Planner
+                    tasks={this.state.tasks}
+                    markComplete={this.markComplete}
+                    deleteTask={this.deleteTask}
+                  ></Planner>
+                </React.Fragment>
+              )}
+            ></Route>
+            <Route
+              path="/about"
+              render={(props) => (
+                <React.Fragment>
+                  <About></About>
+                </React.Fragment>
+              )}
+            ></Route>
+          </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }
