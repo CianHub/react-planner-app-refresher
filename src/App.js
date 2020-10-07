@@ -5,15 +5,20 @@ import Header from './components/Header';
 import Planner from './components/Planner';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { About } from './components/About';
-
+import axios from 'axios';
 class App extends React.Component {
   state = {
-    tasks: [
-      { id: 1, title: 'Feed Franklin', completed: true },
-      { id: 2, title: 'Laundry', completed: false },
-      { id: 3, title: 'Clean kitchen', completed: false },
-    ],
+    tasks: [],
   };
+
+  async componentDidMount() {
+    const req = await axios.get(
+      'https://jsonplaceholder.typicode.com/todos?_limit=10'
+    );
+    const data = req.data;
+    console.log(data);
+    this.setState({ tasks: [...this.state.tasks, ...data] });
+  }
 
   addNewTask = (task) => {
     this.setState({
