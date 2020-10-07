@@ -11,8 +11,8 @@ class App extends React.Component {
     ],
   };
 
-  markComplete = (e) => {
-    console.log('hi')
+  markComplete = (id) => {
+    console.log(id)
   }
 
   render() {

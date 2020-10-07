@@ -11,16 +11,17 @@ export class Task extends Component {
     markComplete = (e) => console.log(e.target.value)
 
     render() {
+        const { id, title } = this.props.task
         return (
             <div style={this.getStyle(this.props.completed)}>
                 <p>
-                    <input type="checkbox" onChange={this.props.markComplete} />{' '}
-                    {this.props.task.title}</p>
+                    <input type="checkbox" onChange={this.props.markComplete.bind(this, id)} />{' '}
+                    {title}</p>
             </div>
         );
     }
 }
 
-Task.propTypes = { task: PropTypes.object.isRequired };
+Task.propTypes = { task: PropTypes.object.isRequired, markComplete: PropTypes.func.isRequired };
 
 export default Task;
