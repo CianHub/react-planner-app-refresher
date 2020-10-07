@@ -15,17 +15,32 @@ class App extends React.Component {
     this.setState({
       tasks: this.state.tasks.map((task) => {
         if (task.id === id) {
-          task.completed = !task.completed
+          task.completed = !task.completed;
         }
-        return task
-      })
-    })
-  }
+        return task;
+      }),
+    });
+  };
+
+  deleteTask = (id) => {
+    this.setState({
+      tasks: this.state.tasks.filter((task) => {
+        if (task.id === id) {
+          return false;
+        }
+        return true;
+      }),
+    });
+  };
 
   render() {
     return (
       <div className="App">
-        <Planner tasks={this.state.tasks} markComplete={this.markComplete}></Planner>
+        <Planner
+          tasks={this.state.tasks}
+          markComplete={this.markComplete}
+          deleteTask={this.deleteTask}
+        ></Planner>
       </div>
     );
   }

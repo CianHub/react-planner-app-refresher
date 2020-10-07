@@ -20,7 +20,12 @@ export class Task extends Component {
             onChange={this.props.markComplete.bind(this, id)}
           />{' '}
           {title}
-          <button style={buttonStyle}>X</button>
+          <button
+            style={buttonStyle}
+            onClick={this.props.deleteTask.bind(this, id)}
+          >
+            X
+          </button>
         </p>
       </div>
     );
@@ -30,6 +35,7 @@ export class Task extends Component {
 Task.propTypes = {
   task: PropTypes.object.isRequired,
   markComplete: PropTypes.func.isRequired,
+  deleteTask: PropTypes.func.isRequired,
 };
 
 const buttonStyle = {
@@ -40,5 +46,7 @@ const buttonStyle = {
   borderRadius: '50%',
   cursor: 'pointer',
   float: 'right',
+  outline: 'none',
 };
+
 export default Task;
