@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class AddTask extends Component {
   state = {
@@ -33,3 +34,7 @@ export default class AddTask extends Component {
     );
   }
 }
+
+AddTask.propTypes = {
+  addNewTask: PropTypes.func.isRequired,
+};
