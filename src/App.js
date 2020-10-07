@@ -12,7 +12,14 @@ class App extends React.Component {
   };
 
   markComplete = (id) => {
-    console.log(id)
+    this.setState({
+      tasks: this.state.tasks.map((task) => {
+        if (task.id === id) {
+          task.completed = !task.completed
+        }
+        return task
+      })
+    })
   }
 
   render() {
