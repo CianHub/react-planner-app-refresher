@@ -13,7 +13,14 @@ class App extends React.Component {
     ],
   };
 
-  addNewTask = (task) => this.setState({ tasks: [...this.state.tasks, task] });
+  addNewTask = (task) => {
+    this.setState({
+      tasks: [
+        ...this.state.tasks,
+        { ...task, id: this.state.tasks.length + 1 },
+      ],
+    });
+  };
 
   markComplete = (id) => {
     this.setState({
@@ -42,7 +49,7 @@ class App extends React.Component {
       <div className="App">
         <div className="container">
           <Header></Header>
-          <AddTask addTask={addTask}></AddTask>
+          <AddTask addNewTask={this.addNewTask}></AddTask>
           <Planner
             tasks={this.state.tasks}
             markComplete={this.markComplete}

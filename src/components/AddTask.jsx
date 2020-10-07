@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 
 export default class AddTask extends Component {
   state = {
-    field: '',
+    title: '',
   };
 
   submit = (e) => {
     e.preventDefault();
-    this.props.addTask.bind(this, {
+    this.props.addNewTask.bind(this, {
       title: this.state.title,
       completed: false,
-    });
+    })();
   };
 
   change = (e) => this.setState({ title: e.target.value });
@@ -26,7 +26,9 @@ export default class AddTask extends Component {
           onChange={this.change}
           value={this.state.title}
         />
-        <input type="submit" className="btn btn-primary" value="submit"></input>
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
       </form>
     );
   }
