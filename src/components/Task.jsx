@@ -11,6 +11,6 @@ export class Task extends Component {
     }
 }
 
-Task.propTypes = { task: PropTypes.array.isRequired }
+Task.propTypes = { task: PropTypes.object.isRequired }
 
 export default Task

@@ -1,5 +1,6 @@
 import React from 'react';
 import Task from './Task';
+import PropTypes from 'prop-types'
 
 export default class Planner extends React.Component {
     render() {
@@ -8,3 +9,5 @@ export default class Planner extends React.Component {
         })
     }
 }
+
+Planner.propTypes = { tasks: PropTypes.array.isRequired }
